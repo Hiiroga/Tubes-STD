@@ -13,6 +13,7 @@ using namespace std;
 struct gerbong {
     string Kode_Gerbong;
     int Kapasitas;
+    int Jumlah_Penumpang; //new
 };
 
 typedef gerbong infotype;
@@ -27,6 +28,7 @@ struct elemengerbong {
 
 struct ListGerbong {
     adr_gerbongP first;
+    adr_gerbongP Last; //new
 };
 
 
