@@ -3,9 +3,6 @@
 
 #include <iostream>
 using namespace std;
-#define info(P) (P)->info
-#define next(P) (P)->next
-#define first(L) L.first
 
 
 struct gerbong {
@@ -16,23 +13,24 @@ struct gerbong {
 typedef gerbong infotype;
 typedef struct elemengerbong *adr_gerbongP;
 
-
-
 struct elemengerbong {
     infotype info;
     adr_gerbongP next;
-} ;
+    adr_gerbongP prev;
+    ListPenumpang *penumpangList;  
+};
 
 struct ListGerbong {
     adr_gerbongP first;
 };
 
-void createListGerbong_103012330085(ListGerbong &L);
-adr_gerbongP createElemenGerbong_103012330085(infotype X);
-void InsertLastG_103012330085(ListGerbong &L, adr_gerbongP P);
-void ShowGerbong_103012330085(ListGerbong L);
-void DeleteFirstG_103012330085(ListGerbong &L, adr_gerbongP P);
-adr_gerbongP SearchG_103012330085(ListGerbong L, string dari, string ke, string tanggal);
+
+void createListGerbong(ListGerbong &L);
+adr_gerbongP createElemenGerbong(infotype X);
+void InsertLastG(ListGerbong &L, adr_gerbongP P);
+void ShowGerbong(ListGerbong L);
+void DeleteFirstG(ListGerbong &L);
+adr_gerbongP SearchG(ListGerbong L, string kode);
 
 
 struct penumpang {
@@ -41,27 +39,27 @@ struct penumpang {
     string Nama;
 };
 
-typedef penumpang infotype;
+typedef penumpang infotypeP;
 typedef struct elemenpenumpang *adr_penumpangP;
 
-
-
 struct elemenpenumpang {
-    infotype info;
+    infotypeP info;
     adr_penumpangP next;
-} ;
+};
 
 struct ListPenumpang {
     adr_penumpangP first;
 };
 
-void createListPenumpang_103012330085(ListPenumpang &L);
-adr_penumpangP createElemenPenumpang_103012330085(infotype X);
-void InsertLastP_103012330085(ListPenumpang &L, adr_gerbongP P);
-void ShowAll_103012330085(ListPenumpang L);
-void DeleteFirstP_103012330085(ListPenumpang &L, adr_gerbongP P);
-adr_penumpangP SearchP_103012330085(ListPenumpang L, string dari, string ke, string tanggal);
+void createListPenumpang(ListPenumpang &L);
+adr_penumpangP createElemenPenumpang(infotypeP X);
+void InsertLastP(ListPenumpang &L, adr_penumpangP P);
+void ShowAll(ListPenumpang L);
+void DeleteFirstP(ListPenumpang &L);
+adr_penumpangP SearchP(ListPenumpang L, string kursi);
 
 
+int TotalPenumpang(ListPenumpang L);
+int TotalPendapatan(ListPenumpang L);
 
 #endif // GERBONG_H_INCLUDED
