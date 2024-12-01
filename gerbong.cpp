@@ -32,6 +32,7 @@ void ShowGerbong(ListGerbong L) {
     while (P != NULL) {
         cout << "Kode Gerbong: " << info(P).Kode_Gerbong << endl;
         cout << "Kapasitas: " << info(P).Kapasitas << endl;
+        cout << "Jumlah Penumpang: " << info(P).Kapasitas << endl; //new
         ShowAll(*P->penumpangList);  
         P = next(P);
     }
