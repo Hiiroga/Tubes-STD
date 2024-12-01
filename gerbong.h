@@ -1,6 +1,11 @@
 #ifndef GERBONG_H_INCLUDED
 #define GERBONG_H_INCLUDED
 
+#define info(P) (P)->info
+#define next(P) (P)->next
+#define prev(P) (P)->prev
+#define first(L) L.first
+
 #include <iostream>
 using namespace std;
 
