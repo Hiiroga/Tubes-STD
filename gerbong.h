@@ -36,7 +36,7 @@ void createListGerbong(ListGerbong &L);
 adr_gerbongP createElemenGerbong(infotype X);
 void InsertLastG(ListGerbong &L, adr_gerbongP P);
 void ShowGerbong(ListGerbong L);
-void DeleteFirstG(ListGerbong &L);
+void DeleteAfterG(ListGerbong &L);
 adr_gerbongP SearchG(ListGerbong L, string kode);
 
 
@@ -62,7 +62,7 @@ void createListPenumpang(ListPenumpang &L);
 adr_penumpangP createElemenPenumpang(infotypeP X);
 void InsertLastP(ListPenumpang &L, adr_penumpangP P);
 void ShowAll(ListPenumpang L);
-void DeleteFirstP(ListPenumpang &L);
+void DeleteAfterP(ListPenumpang &L);
 adr_penumpangP SearchP(ListPenumpang L, string kursi);
 
 
