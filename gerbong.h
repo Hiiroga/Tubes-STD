@@ -9,7 +9,7 @@
 #include <iostream>
 using namespace std;
 
-
+// gerbong (parent)
 struct gerbong {
     string Kode_Gerbong;
     int Kapasitas;
@@ -39,7 +39,7 @@ void ShowGerbong(ListGerbong L);
 void DeleteAfterG(ListGerbong &L);
 adr_gerbongP SearchG(ListGerbong L, string kode);
 
-
+// penumpang (child)
 struct penumpang {
     string No_kursi;
     string Harga_Tiket;
