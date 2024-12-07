@@ -21,13 +21,13 @@ int main() {
                 cout << "----------------------" << endl;
                 cout << "Kode Gerbong: "; cin >> datagerbong.Kode_Gerbong;
                 cout << "Kapasitas: "; cin >> datagerbong.Kapasitas;
-                datagerbong.Jumlah_Penumpang = 0; // ini buat Inisiasi Jumlah Penumpang
+                datagerbong.Jumlah_Penumpang = 0; // Inisiasi Jumlah Penumpang
                 adr_gerbongP P = createElemenGerbong(datagerbong);
                 InsertLastG(G, P);
                 break;
             }
 
-            case 2: { // Buat ngetampilin Data Gerbong
+            case 2: { // Tampilkan Data Gerbong
                 cout << "----------------------" << endl;
                 cout << "     Data Gerbong     " << endl;
                 cout << "----------------------" << endl;
@@ -51,17 +51,15 @@ int main() {
             }
 
             case 4: { // Cari Gerbong
-                string cari;
-                cout << "-----------------------" << endl;
-                cout << "   Cari Data Gerbong   " << endl;
-                cout << "-----------------------" << endl;
-                cout << "Input kode gerbong: "; cin >> cari;
-                adr_gerbongP found = SearchG(G, cari);
-                if (found != NULL) {
+                string kodeGerbong;
+                cout << "Masukkan kode gerbong yang ingin dicari: ";
+                cin >> kodeGerbong;
+                adr_gerbongP gerbongFound = SearchG(G, kodeGerbong);
+                if (gerbongFound != NULL) {
                     cout << "Gerbong ditemukan: " << endl;
-                    cout << "Kode Gerbong: " << info(found).Kode_Gerbong << endl;
-                    cout << "Kapasitas: " << info(found).Kapasitas << endl;
-                    cout << "Jumlah penumpang: " << info(found).Jumlah_Penumpang << endl;
+                    cout << "Kode Gerbong: " << info(gerbongFound).Kode_Gerbong << endl;
+                    cout << "Kapasitas: " << info(gerbongFound).Kapasitas << endl;
+                    cout << "Jumlah Penumpang: " << info(gerbongFound).Jumlah_Penumpang << endl;
                 } else {
                     cout << "Gerbong tidak ditemukan." << endl;
                 }
@@ -102,7 +100,7 @@ int main() {
                 break;
             }
 
-            case 7: { // Ngetampilin Semua Gerbong dan Penumpang
+            case 7: { // Tampilkan Semua Gerbong dan Penumpang
                 cout << "------------------------------------" << endl;
                 cout << " Data seluruh Gerbong dan Penumpang " << endl;
                 cout << "------------------------------------" << endl;
@@ -129,7 +127,7 @@ int main() {
                 } else {
                     cout << "Penumpang tidak ditemukan." << endl;
                 }
-            break;
+                break;
             }
 
             case 9: { // Menghapus data penumpang pada gerbong tertentu
@@ -146,14 +144,13 @@ int main() {
                         deletePenumpang(LPNP, penumpangHapus);
                         cout << "Penumpang berhasil diputus dari gerbong." << endl;
                     } else {
-                    cout << "Penumpang tidak ditemukan di gerbong ini." << endl;
+                        cout << "Penumpang tidak ditemukan di gerbong ini." << endl;
                     }
                 } else {
-                cout << "Gerbong tidak ditemukan." << endl;
+                    cout << "Gerbong tidak ditemukan." << endl;
                 }
-            break;
+                break;
             }
-
 
             case 10: { // Menghitung jumlah penumpang pada gerbong tertentu
                 string kodeGerbong;
@@ -181,6 +178,19 @@ int main() {
                 cout << " Data Seluruh Penumpang " << endl;
                 cout << "------------------------" << endl;
                 showP(LPNP);
+                break;
+            }
+
+            case 12: { // Menghapus Data Parent dan Child-nya
+                string kodeGerbong;
+                cout << "Masukkan Kode Gerbong yang ingin dihapus: ";
+                cin >> kodeGerbong;
+                adr_gerbongP gerbongHapus = SearchG(G, kodeGerbong);
+                if (gerbongHapus != NULL) {
+                    DeleteParentAndChild(G, LPNP, kodeGerbong); 
+                } else {
+                    cout << "Gerbong tidak ditemukan." << endl;
+                }
                 break;
             }
 
