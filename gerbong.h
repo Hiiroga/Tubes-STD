@@ -15,7 +15,7 @@ using namespace std;
 struct gerbong {
     string Kode_Gerbong;
     int Kapasitas;
-    int Jumlah_Penumpang; //new
+    int Jumlah_Penumpang; 
 };
 
 typedef gerbong infotype;
@@ -35,8 +35,8 @@ void createListGerbong(ListGerbong &L);
 adr_gerbongP createElemenGerbong(infotype X);
 void InsertLastG(ListGerbong &L, adr_gerbongP P);
 void ShowGerbong(ListGerbong L);
-void DeleteFirstG(ListGerbong &L, adr_gerbongP P);
 adr_gerbongP SearchG(ListGerbong L, string kode);
+void DeleteAfterG(ListGerbong &L, string kodePrec, adr_gerbongP &P); // new
 
 
 struct penumpang {
@@ -61,17 +61,17 @@ struct ListPenumpang {
     adr_penumpangP last;
 };
 
+
 void createListPenumpang(ListPenumpang &L);
 adr_penumpangP createElemenPenumpang(infotypeP X);
 void InsertLastP(ListPenumpang &L, adr_penumpangP P);
 void ShowPenumpang(ListPenumpang L, adr_gerbongP G);
-void DeleteFirstP(ListPenumpang &L, adr_penumpangP P);
 adr_penumpangP SearchP(ListPenumpang L, string ID);
+void DeleteAfterP(ListPenumpang &L, string IDPrec, adr_penumpangP &P); //new
+
 
 void connect(ListGerbong G, adr_penumpangP &C);
 void disconnect(adr_penumpangP &C);
-int TotalPenumpang(ListPenumpang L);
-int TotalPendapatan(ListPenumpang L);
 int menuutama();
 void showP(ListPenumpang L);
 
