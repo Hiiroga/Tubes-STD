@@ -1,6 +1,6 @@
 1.Insert data parent dari depan/belakang (5) done
 2.Show all data parent (5) done
-3.Menghapus data parent dan childnya (5) 
+3.Menghapus data parent dan childnya (5) done
 4.Mencari data parent (5) done
 5.Insert data child dan Menghubungkan data parent ke data child(10)(10) done
 6.Mengubah data parent / data child (10) done
