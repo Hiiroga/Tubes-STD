@@ -10,5 +10,12 @@
 10.Menghitung jumlah data child dari parent tertentu (10) done
 11.Main program (10) done
 
+update:
+case 8 (delete PNP) ditambah decrement
+case 11 hitung total seluruh penumpang
+
+bug
+pas hapus gerbong dan PNP (case 12) terus tampilkan seluruh penumpang (case 11) penumpangnya ga ke hapus.
+update data penumpang (case 6) walau penumpang udah dihapus tetep bisa diupdate datanya
 
 
