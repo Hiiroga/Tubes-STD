@@ -27,12 +27,18 @@ void InsertLastG(ListGerbong &L, adr_gerbongP P) {
 
 void ShowGerbong(ListGerbong L) {
     adr_gerbongP P = first(L);
-    while (P != NULL) {
-        cout << "Kode Gerbong: " << info(P).Kode_Gerbong << endl;
-        cout << "Kapasitas: " << info(P).Kapasitas << endl;
-        cout << "Jumlah Penumpang: " << info(P).Jumlah_Penumpang << endl;
-        P = next(P);
+    if (first(L) == NULL) {
+        cout << "Tidak ada data gerbong" << endl;
+    } else {
+        while (P != NULL) {
+            cout << "Kode Gerbong: " << info(P).Kode_Gerbong << endl;
+            cout << "Kapasitas: " << info(P).Kapasitas << endl;
+            cout << "Jumlah Penumpang: " << info(P).Jumlah_Penumpang << endl;
+            cout << "    " << endl;
+            P = next(P);
+        }
     }
+
 }
 
 adr_gerbongP SearchG(ListGerbong L, string kode) {
@@ -103,6 +109,7 @@ void ShowPenumpang(ListPenumpang LPNP, adr_gerbongP G) {
             cout << "Nama: " << info(P).Nama << endl;
             cout << "Nomor Kursi: " << info(P).No_kursi << endl;
             cout << "Harga Tiket: " << info(P).Harga_Tiket << endl;
+            cout << "    " << endl;
         }
         P = next(P);
     }
@@ -195,7 +202,7 @@ void DeleteAfterP(ListPenumpang &LPNP, adr_penumpangP Prec) {
     }
 }
 
-void connect(ListGerbong &G, adr_penumpangP &C) {
+void connect(ListGerbong G, adr_penumpangP &C) {
     string kodegerbong;
     cout << "Kode Gerbong: "; cin >> kodegerbong;
     adr_gerbongP Q = SearchG(G, kodegerbong);
@@ -237,12 +244,14 @@ int menuutama() {
 
 void showP(ListPenumpang LPNP) {
     adr_penumpangP P = first(LPNP);
+    int totalPNP = 0;
     if (P == NULL) {
         cout << "Tidak ada penumpang." << endl;
         return;
     }
     cout << "Daftar Penumpang: " << endl;
     while (P != NULL) {
+        totalPNP++;
         cout << "ID Penumpang: " << info(P).ID_pnp << endl;
         cout << "Nama: " << info(P).Nama << endl;
         cout << "Nomor Kursi: " << info(P).No_kursi << endl;
@@ -250,6 +259,7 @@ void showP(ListPenumpang LPNP) {
         cout << "----------------------------" << endl;
         P = next(P);
     }
+    cout << "Jumlah Seluruh Penumpang:" << totalPNP << endl;
 }
 
 void deletePenumpang(ListPenumpang &LPNP, adr_penumpangP P) {
@@ -266,8 +276,8 @@ void deletePenumpang(ListPenumpang &LPNP, adr_penumpangP P) {
             prev = next(prev);
         }
         next(prev) = next(P);
+
     }
     next(P) = NULL;
-    cout << "Penumpang berhasil dihapus." << endl;
+    info(parent(P)).Jumlah_Penumpang--; //decrement
 }
-
