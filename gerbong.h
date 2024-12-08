@@ -68,7 +68,7 @@ void UpdatePenumpang(ListPenumpang &LPNP, string IDPenumpang);
 void DeleteChildInParent(ListPenumpang &LPNP, string IDPenumpang, adr_gerbongP G);
 int CountChildInParent(ListPenumpang LPNP, adr_gerbongP G);
 void DeleteAfterP(ListPenumpang &LPNP, adr_penumpangP Prec);
-void connect(ListGerbong &G, adr_penumpangP &C);
+void connect(ListGerbong G, adr_penumpangP &C);
 void disconnect(adr_penumpangP &C);
 void deletePenumpang(ListPenumpang &LPNP, adr_penumpangP P);
 
