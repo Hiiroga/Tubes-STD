@@ -5,10 +5,10 @@
 5.Insert data child dan Menghubungkan data parent ke data child(10)(10) done
 6.Mengubah data parent / data child (10) done
 7.Menampilkan seluruh data parent beserta childnya (15) done
-8.Mencari data child pada parent tertentu (10) 
+8.Mencari data child pada parent tertentu (10) done
 9.Menghapus data child pada parent tertentu (15) done
 10.Menghitung jumlah data child dari parent tertentu (10) done
-11.Main program (10)
+11.Main program (10) done
 
 
 
