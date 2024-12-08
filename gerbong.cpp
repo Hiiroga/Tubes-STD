@@ -227,7 +227,8 @@ int menuutama() {
     cout << "\n9. Hapus Data Penumpang Pada Gerbong Tertentu";
     cout << "\n10. Hitung Jumlah Penumpang dalam Gerbong Tertentu";
     cout << "\n11. Tampilkan Semua Penumpang";
-    cout << "\n12. Hapus Data Parent dan Child-nya";
+    cout << "\n12. Hapus Data Gerbong dan Penumpangnya";
+    cout << "\n13. Cari Penumpang dalam Gerbong Tertentu";
     cout << "\n0. Exit\n";
     cout << "Pilih Menu: ";
     cin >> pilihan;
