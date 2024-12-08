@@ -193,7 +193,31 @@ int main() {
                 }
                 break;
             }
-
+            
+            case 13: { // Mencari penumpang pada gerbong tertentu
+                string kodeGerbong;
+                cout << "Masukkan Kode Gerbong: ";
+                cin >> kodeGerbong;
+                adr_gerbongP gerbong = SearchG(G, kodeGerbong);
+                if (gerbong != NULL) {
+                    string idPenumpang;
+                    cout << "Masukkan ID Penumpang yang ingin dicari: ";
+                    cin >> idPenumpang;
+                    adr_penumpangP penumpangCari = SearchP(LPNP, idPenumpang);
+                    if (penumpangCari != NULL && parent(penumpangCari) == gerbong) {
+                        cout << "Penumpang ditemukan di gerbong : " << kodeGerbong << endl;
+                        cout << "ID Penumpang: " << info(penumpangCari).ID_pnp << endl;
+                        cout << "Nama: " << info(penumpangCari).Nama << endl;
+                        cout << "Nomor Kursi: " << info(penumpangCari).No_kursi << endl;
+                        cout << "Harga Tiket: " << info(penumpangCari).Harga_Tiket << endl;
+                    } else {
+                        cout << "Penumpang dengan ID " << idPenumpang << " tidak ditemukan di gerbong ini." << endl;
+                    }
+                } else {
+                        cout << "Gerbong dengan kode " << kodeGerbong << " tidak ditemukan." << endl;
+                }
+                break;
+            }
             default: {
                 cout << "Pilihan tidak valid! Silakan pilih lagi." << endl;
                 break;
