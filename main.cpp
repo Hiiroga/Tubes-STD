@@ -11,7 +11,6 @@ int main() {
     createListPenumpang(LPNP);
     infotype datagerbong;
     infotypeP datapenumpang;
-
     pilihan = menuutama();
     while (pilihan != 0) {
         switch (pilihan) {
@@ -72,8 +71,8 @@ int main() {
                 cout << "----------------------" << endl;
                 cout << "ID Penumpang: "; cin >> datapenumpang.ID_pnp;
                 cout << "Nama: "; cin >> datapenumpang.Nama;
-                cout << "Nomor Kursi: "; cin >> datapenumpang.No_kursi;
                 cout << "Harga Tiket: "; cin >> datapenumpang.Harga_Tiket;
+                cout << "Nomor Kursi: "; cin >> datapenumpang.No_kursi;
 
                 adr_penumpangP P = createElemenPenumpang(datapenumpang);
                 InsertLastP(LPNP, P);
@@ -105,14 +104,19 @@ int main() {
                 cout << " Data seluruh Gerbong dan Penumpang " << endl;
                 cout << "------------------------------------" << endl;
                 adr_gerbongP P = first(G);
-                while (P != NULL) {
-                    cout << "Kode Gerbong: " << info(P).Kode_Gerbong << endl;
-                    cout << "Kapasitas: " << info(P).Kapasitas << endl;
-                    cout << "Jumlah Penumpang: " << info(P).Jumlah_Penumpang << endl;
-                    cout << "Daftar Penumpang: " << endl;
-                    ShowPenumpang(LPNP, P); // Menampilkan penumpang di gerbong
-                    P = next(P);
+                if (first(G) == NULL) {
+                    cout << "Data Kosong." << endl;
+                } else {
+                    while (P != NULL) {
+                        cout << "Kode Gerbong: " << info(P).Kode_Gerbong << endl;
+                        cout << "Kapasitas: " << info(P).Kapasitas << endl;
+                        cout << "Jumlah Penumpang: " << info(P).Jumlah_Penumpang << endl;
+                        cout << "Daftar Penumpang: " << endl;
+                        ShowPenumpang(LPNP, P); // Menampilkan penumpang di gerbong
+                        P = next(P);
+                    }
                 }
+
                 break;
             }
 
@@ -142,7 +146,7 @@ int main() {
                     adr_penumpangP penumpangHapus = SearchP(LPNP, idPenumpang);
                     if (penumpangHapus != NULL && parent(penumpangHapus) == gerbong) {
                         deletePenumpang(LPNP, penumpangHapus);
-                        cout << "Penumpang berhasil diputus dari gerbong." << endl;
+                        cout << "Penumpang berhasil dihapus dari gerbong." << endl;
                     } else {
                         cout << "Penumpang tidak ditemukan di gerbong ini." << endl;
                     }
@@ -187,13 +191,13 @@ int main() {
                 cin >> kodeGerbong;
                 adr_gerbongP gerbongHapus = SearchG(G, kodeGerbong);
                 if (gerbongHapus != NULL) {
-                    DeleteParentAndChild(G, LPNP, kodeGerbong); 
+                    DeleteParentAndChild(G, LPNP, kodeGerbong);
                 } else {
                     cout << "Gerbong tidak ditemukan." << endl;
                 }
                 break;
             }
-            
+
             case 13: { // Mencari penumpang pada gerbong tertentu
                 string kodeGerbong;
                 cout << "Masukkan Kode Gerbong: ";
