@@ -15,7 +15,7 @@ using namespace std;
 struct gerbong {
     string Kode_Gerbong;
     int Kapasitas;
-    int Jumlah_Penumpang; //new
+    int Jumlah_Penumpang;
 };
 
 struct penumpang {
@@ -49,6 +49,7 @@ struct elemengerbong {
 struct elemenpenumpang {
     infotypeP info;
     adr_penumpangP next;
+    adr_penumpangP prev;
 };
 
 
@@ -56,21 +57,23 @@ void createListGerbong(ListGerbong &L);
 adr_gerbongP createElemenGerbong(infotype X);
 void InsertLastG(ListGerbong &L, adr_gerbongP P);
 void ShowGerbong(ListGerbong L);
-void DeleteFirstG(ListGerbong &L, adr_gerbongP P);
+void DeleteAfterG(ListGerbong &L,adr_gerbongP Prec, adr_gerbongP P);
 adr_gerbongP SearchG(ListGerbong L, string kode);
+
 
 void createListPenumpang(ListPenumpang &LPNP);
 adr_penumpangP createElemenPenumpang(infotypeP X);
 void InsertLastP(ListPenumpang &LPNP, adr_penumpangP P);
 void ShowPenumpang(ListPenumpang LPNP);
-void DeleteFirstP(ListPenumpang &LPNP, adr_penumpangP P);
-adr_penumpangP SearchP(ListPenumpang L, string ID);
+void DeleteAfterP(ListPenumpang &LPNP,adr_penumpangP Prec, adr_penumpangP P);
+adr_penumpangP SearchP(ListPenumpang LPNP, string ID);
 
 void connect(ListGerbong G, infotypeP dataPNP);
-void disconnect(adr_penumpangP &C);
 int TotalPenumpang(ListPenumpang L);
 int TotalPendapatan(ListPenumpang L);
 int menuutama();
 void showP(ListPenumpang L);
+
+
 
 #endif // GERBONG_H_INCLUDED
