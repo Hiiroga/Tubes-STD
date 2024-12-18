@@ -12,7 +12,6 @@ adr_gerbongP createElemenGerbong(infotype X) {
     info(P) = X;
     next(P) = NULL;
     prev(P) = NULL;
-    //child(P) = new ListPenumpang;
     createListPenumpang(child(P));
     return P;
 }
@@ -44,19 +43,20 @@ void ShowGerbong(ListGerbong L) {
 
 }
 
-void DeleteFirstG(ListGerbong &L, adr_gerbongP P){
-    if (next(first(L)) != NULL) {
-        P = first(L);
-        first(L) = next(P);
-        next(P) = NULL;
+void DeleteAfterG(ListGerbong &L,adr_gerbongP Prec, adr_gerbongP P) {
+    if (Prec == NULL || next(Prec) == NULL) {
+        cout << "Gerbong tidak ditemukan" <<endl;
+        P = NULL;
     } else {
-        P = first(L);
-        first(L) = NULL;
+        P = next(Prec);
+        next(Prec) = next(P);
+        next(P) = NULL;
+        cout << "Gerbong berhasil dihapus dari list" <<endl;
     }
 }
 
-adr_gerbongP SearchG(ListGerbong L, string kode){
-    adr_gerbongP P = first(L);
+adr_gerbongP SearchG(ListGerbong LPNP, string kode){
+    adr_gerbongP P = first(LPNP);
     while (P != NULL) {
         if (info(P).Kode_Gerbong == kode) {
             return P;
@@ -67,8 +67,8 @@ adr_gerbongP SearchG(ListGerbong L, string kode){
 }
 
 
-void createListPenumpang(ListPenumpang &L){
-    first(L) = NULL;
+void createListPenumpang(ListPenumpang &LPNP){
+    first(LPNP) = NULL;
 }
 
 adr_penumpangP createElemenPenumpang(infotypeP X){
@@ -78,10 +78,10 @@ adr_penumpangP createElemenPenumpang(infotypeP X){
     return P;
 }
 
-void InsertLastP(ListPenumpang &L, adr_penumpangP P){
-    adr_penumpangP Q = first(L);
+void InsertLastP(ListPenumpang &LPNP, adr_penumpangP P){
+    adr_penumpangP Q = first(LPNP);
     if (Q == NULL) {
-        first(L) = P;
+        first(LPNP) = P;
     } else {
         while (next(Q) != NULL) {
             Q = next(Q);
@@ -90,9 +90,9 @@ void InsertLastP(ListPenumpang &L, adr_penumpangP P){
     }
 }
 
-void ShowPenumpang(ListPenumpang L){
-    adr_penumpangP P = first(L);
-    if (first(L) == NULL) {
+void ShowPenumpang(ListPenumpang LPNP){
+    adr_penumpangP P = first(LPNP);
+    if (first(LPNP) == NULL) {
         cout << "Tidak ada data penumpang." << endl;
     } else {
         while (P != NULL) {
@@ -106,21 +106,21 @@ void ShowPenumpang(ListPenumpang L){
     }
 }
 
-void DeleteFirstP(ListPenumpang &L, adr_penumpangP P){
-    //if (next(first(L)) == NULL) {
-       // P = first(L);
-       // first(L) = NULL;
-       // last(L) = NULL;
-    //} else {
-       // P = first(L);
-       // first(L) = next(P);
-       // next(P) = NULL;
-       // prev(first(L)) = NULL;
-   // }
+
+void DeleteAfterP(ListPenumpang &LPNP,adr_penumpangP Prec, adr_penumpangP P) {
+    if (Prec == NULL || next(Prec) == NULL) {
+        cout << "Penumpang tidak ditemukan" <<endl;
+        P = NULL;
+    } else {
+        P = next(Prec);
+        next(Prec) = next(P);
+        next(P) = NULL;
+        cout << "Penumpang berhasil dihapus dari list" <<endl;
+    }
 }
 
-adr_penumpangP SearchP(ListPenumpang L, string ID){
-    adr_penumpangP P = first(L);
+adr_penumpangP SearchP(ListPenumpang LPNP, string ID){
+    adr_penumpangP P = first(LPNP);
     while (P != NULL) {
         if (info(P).ID_pnp == ID) {
             return P;
@@ -135,18 +135,18 @@ void connect(ListGerbong G, infotypeP dataPNP) {
     cout << "Kode Gerbong: "; cin >> kodegerbong;
     adr_gerbongP Q = SearchG(G, kodegerbong);
     if (Q != NULL) {
+        if (info(Q).Jumlah_Penumpang < info(Q).Kapasitas) {
         adr_penumpangP P = createElemenPenumpang(dataPNP);
         InsertLastP(child(Q),P);
         info(Q).Jumlah_Penumpang++;
         cout << "Data Tersimpan." << endl;
+        } else {
+            cout << "Kapasitas gerbong sudah penuh, penumpang tidak bisa ditambahkan." << endl;
+        }
     } else {
         cout << "Kode gerbong tidak ditemukan." << endl;
         connect(G, dataPNP);
     }
-}
-
-void disconnect(adr_penumpangP &C) {
-    //parent(C) = NULL;
 }
 
 int menuutama() {
@@ -160,12 +160,11 @@ int menuutama() {
     cout << "\n5. Input Data Penumpang";
     cout << "\n6. Update Data Penumpang";
     cout << "\n7. Tampilkan Semua Data Gerbong dan Penumpang";
-    cout << "\n8. Hapus Data Penumpang Setelah Tertentu";
-    cout << "\n9. Hapus Data Penumpang Pada Gerbong Tertentu";
-    cout << "\n10. Hitung Jumlah Penumpang dalam Gerbong Tertentu";
-    cout << "\n11. Tampilkan Semua Penumpang";
-    cout << "\n12. Hapus Data Gerbong dan Penumpangnya";
-    cout << "\n13. Cari Penumpang dalam Gerbong Tertentu";
+    cout << "\n8. Hapus Data Penumpang Pada Gerbong Tertentu";
+    cout << "\n9. Hitung Jumlah Penumpang dalam Gerbong Tertentu";
+    cout << "\n10. Tampilkan Semua Penumpang";
+    cout << "\n11. Hapus Data Gerbong dan Penumpangnya";
+    cout << "\n12. Cari Penumpang dalam Gerbong Tertentu";
     cout << "\n0. Exit\n";
     cout << "Pilih Menu: ";
     int input = 0;
@@ -173,9 +172,9 @@ int menuutama() {
     return input;
 }
 
-void showP(ListPenumpang L){
-    adr_penumpangP P = first(L);
-    if (first(L) == NULL) {
+void showP(ListPenumpang LPNP){
+    adr_penumpangP P = first(LPNP);
+    if (first(LPNP) == NULL) {
         cout << "Tidak ada data Penumpang." << endl;
     } else {
         while (P != NULL) {
@@ -188,3 +187,4 @@ void showP(ListPenumpang L){
         }
     }
 }
+
