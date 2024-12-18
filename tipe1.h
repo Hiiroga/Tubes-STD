@@ -70,7 +70,6 @@ adr_penumpangP SearchP(ListPenumpang LPNP, string ID);
 
 void connect(ListGerbong G, infotypeP dataPNP);
 int TotalPenumpang(ListPenumpang L);
-int TotalPendapatan(ListPenumpang L);
 int menuutama();
 void showP(ListPenumpang L);
 
