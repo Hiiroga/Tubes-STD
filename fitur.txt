@@ -1,6 +1,6 @@
 1.Insert data parent dari depan/belakang (5) done case 1
 2.Show all data parent (5) done case 2
-3.Menghapus data parent dan childnya (5) done
+3.Menghapus data parent dan childnya (5) done case 11
 4.Mencari data parent (5) done case 4
 5.Insert data child dan Menghubungkan data parent ke data child(10)(10) done case 5 
 6.Mengubah data parent / data child done case 3, case 6
@@ -8,14 +8,13 @@
 8.Mencari data child pada parent tertentu (10) done case 12
 9.Menghapus data child pada parent tertentu (15) done case 8
 10.Menghitung jumlah data child dari parent tertentu (10) done case 9
-11.Main program (10)
+11.Main program (10) done semua
 
 update:
-case 8 (delete PNP) ditambah decrement
-case 11 hitung total seluruh penumpang
+hapus case yg tidak perlu
+case 9,3, dan 8 sudah ditambahkan
 
 bug
-pas hapus gerbong dan PNP (case 12) terus tampilkan seluruh penumpang (case 11) penumpangnya ga ke hapus.
-update data penumpang (case 6) walau penumpang udah dihapus tetep bisa diupdate datanya
+di case 5 bug input melebihi kapasitas (done)
 
 
