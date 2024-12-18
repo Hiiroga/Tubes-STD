@@ -1,13 +1,13 @@
 1.Insert data parent dari depan/belakang (5) done case 1
 2.Show all data parent (5) done case 2
-3.Menghapus data parent dan childnya (5) 
+3.Menghapus data parent dan childnya (5) done
 4.Mencari data parent (5) done case 4
 5.Insert data child dan Menghubungkan data parent ke data child(10)(10) done case 5 
 6.Mengubah data parent / data child done case 3, case 6
 7.Menampilkan seluruh data parent beserta childnya (15) done case 7
-8.Mencari data child pada parent tertentu (10) done case 13
-9.Menghapus data child pada parent tertentu (15) 
-10.Menghitung jumlah data child dari parent tertentu (10) 
+8.Mencari data child pada parent tertentu (10) done case 12
+9.Menghapus data child pada parent tertentu (15) done case 8
+10.Menghitung jumlah data child dari parent tertentu (10) done case 9
 11.Main program (10)
 
 update:
