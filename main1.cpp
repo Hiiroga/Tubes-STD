@@ -143,12 +143,14 @@ int main() {
                         if (penumpangHapus == first(child(gerbong))) {
                             first(child(gerbong)) = next(penumpangHapus);
                             next(penumpangHapus) = NULL;
+                            info(gerbong).Jumlah_Penumpang--;
                         } else {
                         adr_penumpangP Prec = first(child(gerbong));
                         while (next(Prec) != penumpangHapus) {
                             Prec = next(Prec);
                         }
                         DeleteAfterP(child(gerbong), Prec, penumpangHapus);
+                        info(gerbong).Jumlah_Penumpang--;
                     }
                     cout << "Penumpang dengan ID " << idPenumpang << " berhasil dihapus dari gerbong " << kodeGerbong << "." << endl;
                     } else {
