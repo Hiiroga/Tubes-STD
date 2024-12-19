@@ -22,8 +22,15 @@ int main() {
                 cout << "Kode Gerbong: "; cin >> datagerbong.Kode_Gerbong;
                 cout << "Kapasitas: "; cin >> datagerbong.Kapasitas;
                 datagerbong.Jumlah_Penumpang = 0; // Inisiasi Jumlah Penumpang
-                adr_gerbongP P = createElemenGerbong(datagerbong);
-                InsertLastG(G, P);
+                adr_gerbongP idgerbong = SearchG(G, datagerbong.Kode_Gerbong);
+                if (idgerbong == NULL) {
+                    adr_gerbongP P = createElemenGerbong(datagerbong);
+                    InsertLastG(G, P);
+                    cout << "Data tersimpan." << endl;
+                } else {
+                    cout << "ID Gerbong sudah ada." << endl;
+                }
+
                 break;
             }
 
@@ -76,8 +83,20 @@ int main() {
                 cout << "Nama: "; cin >> datapenumpang.Nama;
                 cout << "Nomor Kursi: "; cin >> datapenumpang.No_kursi;
                 cout << "Harga Tiket: "; cin >> datapenumpang.Harga_Tiket;
+                adr_gerbongP P = first(G);
+                adr_penumpangP idpnp;
+                while (P != NULL) {
+                    if (P != NULL) {
+                        idpnp = SearchP(child(P), datapenumpang.ID_pnp);
+                    }
+                    P = next(P);
+                }
+                if (idpnp == NULL) {
+                    connect(G, datapenumpang);
+                } else {
+                    cout << "ID Penumpang sudah ada." << endl;
+                }
 
-                connect(G, datapenumpang);
                 break;
             }
 
