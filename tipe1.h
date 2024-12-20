@@ -49,7 +49,6 @@ struct elemengerbong {
 struct elemenpenumpang {
     infotypeP info;
     adr_penumpangP next;
-    adr_penumpangP prev;
 };
 
 
